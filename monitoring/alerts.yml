@@ -1,0 +1,47 @@
+groups:
+  - name: webindexer
+    rules:
+      - alert: ServiceDown
+        expr: up{job="webindexer"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "WebIndexer service is down"
+          description: "WebIndexer has been down for more than 1 minute"
+
+      - alert: HighErrorRate
+        expr: rate(webindexer_fail_total[5m]) / rate(webindexer_success_total[5m]) > 0.3
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }}"
+
+      - alert: DiskAlmostFull
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) < 0.1
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Disk almost full"
+          description: "Only {{ $value | humanizePercentage }} disk space remaining"
+
+      - alert: MemoryHigh
+        expr: webindexer_memory_rss_bytes > 350 * 1024 * 1024
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "RSS memory is {{ $value | humanize1024 }}B"
+
+      - alert: LowThroughput
+        expr: webindexer_pages_per_second < 5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low crawl throughput"
+          description: "Throughput is {{ $value }} pg/s"

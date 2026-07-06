@@ -1,0 +1,10 @@
+# terraform.tfvars.example
+# Copy to terraform.tfvars and fill in values
+
+vultr_api_key       = "YOUR_VULTR_API_KEY"
+cloudflare_api_token = "YOUR_CLOUDFLARE_API_TOKEN"
+ssh_private_key     = file("~/.ssh/id_rsa")
+environment         = "prod"
+region              = "ewr"
+plan                = "vc2-1c-1gb"
+domain              = "webindexer.dev"

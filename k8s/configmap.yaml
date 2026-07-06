@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webindexer-config
+  namespace: crawler
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  LOG_LEVEL: "info"
+
+  DB_BACKEND: "pg"
+  REDIS_ENABLED: "true"
+  KAFKA_ENABLED: "true"
+  ES_ENABLED: "true"
+
+  PG_HOST: "postgres.crawler.svc.cluster.local"
+  PG_PORT: "5432"
+  PG_DATABASE: "webindexer"
+  PG_USER: "webindexer"
+
+  REDIS_HOST: "redis.crawler.svc.cluster.local"
+  REDIS_PORT: "6379"
+
+  KAFKA_BROKERS: "kafka.crawler.svc.cluster.local:9092"
+
+  ES_NODE: "http://elasticsearch.crawler.svc.cluster.local:9200"
+  ES_INDEX: "pages"
+
+  CONCURRENCY: "50"
+  DOMAIN_LIMIT: "30"
+  DOMAIN_MAX: "200"
+  FETCH_TIMEOUT: "1500"
+  MAX_DEPTH: "10"
+  QUEUE_LOW_WATER: "10000"
+  FRONTIER_MAX: "50000"
+
+  RATE_LIMIT_MAX: "100"
+  RATE_LIMIT_SEARCH_MAX: "30"
