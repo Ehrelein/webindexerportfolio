@@ -1,3 +1,5 @@
+[![Telegram](https://img.shields.io/badge/Telegram-@gleb843-blue?logo=telegram)](https://t.me/gleb843)
+
 # WebIndexer
 
 Production-grade веб-кроулер и поисковая система. Полная бэкенд-инфраструктура: PostgreSQL, Kafka, Redis, Elasticsearch, Prometheus, Grafana — Docker Compose или один VPS.
