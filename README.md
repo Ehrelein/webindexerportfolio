@@ -94,7 +94,7 @@ TLS negotiation:      100-300мс (1-2 round-trip'а)
 ### Docker Compose (полный стек)
 
 ```bash
-git clone https://github.com/Ehrelein/webindexerportfolio.git
+git clone https://github.com/ehrelein/webindexerportfolio.git
 cd webindexerportfolio
 docker-compose up -d
 # PostgreSQL + Redis + Kafka + Zookeeper + Elasticsearch + App + Prometheus + Grafana
